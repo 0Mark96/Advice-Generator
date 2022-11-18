@@ -1,0 +1,14 @@
+@import '../../common/variable';
+
+.num_of_advice{
+    font-size: 13px;
+    margin-top:40px;
+    letter-spacing: 0.3em;
+    color: $NeonGreen;
+}
+
+@media screen and (min-width:768px){
+    .num_of_advice{
+        margin-top:50px;
+    }
+}

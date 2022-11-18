@@ -1,0 +1,20 @@
+@import '../../common/variable';
+
+.quote_wrapper{
+    min-height: 200px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    color: $LightCyan;
+
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (min-width:768px){
+    .quote_wrapper{
+        color: $LightCyan;
+        margin-top: 25px;
+        margin-bottom: 35px;
+        min-height: 130px;
+    }
+}

@@ -1,0 +1,40 @@
+@import './common/variable';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $DarkBlue;
+    font-family: 'Manrope', sans-serif;
+}
+
+h1{
+    font-size: 28px;
+    font-weight: 800;
+}
+
+
+button{
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.App{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media screen and (min-width:768px){
+    .App{
+        height: 100vh;
+       align-items: center;
+    }
+}
+
+
+
