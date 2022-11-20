@@ -9,9 +9,10 @@ import GenerateBtn from '../GenerateBtn/GenerateBtn';
 
 const AdviceContainer = () => {
     const {advice_container} = style
-   
+    
     const [adviceData,setAdviceData] = useState({})
     const [isLoading,setIsLoading] = useState(false)
+    const [intervalId,setIntervalId] = useState()
 
     const fetchAdvice = async()=>{
         setIsLoading(true)
@@ -20,7 +21,6 @@ const AdviceContainer = () => {
           const data = await response.json()
           setIsLoading(false)
           setAdviceData(data.slip)
-          console.log('isFetching')
         }catch(err){
           setIsLoading(false)
           console.log(err)
@@ -28,16 +28,27 @@ const AdviceContainer = () => {
         }
       }
    
-      useEffect(()=>{
-        fetchAdvice()
-    },[])   
+    //fetching after mount and start interval
+     useEffect(()=>{
+      fetchAdvice()
+      let interval = setInterval(fetchAdvice,60000)
+      setIntervalId(interval)       
+     },[])
     
+    //fetching after click and reset interval
+    const fetchOnClick = ()=>{
+      fetchAdvice()
+      clearInterval(intervalId)
+      let interval = setInterval(fetchAdvice,60000)
+      setIntervalId(interval)
+    }
+
   return (
     <div className={advice_container}>
       <AdviceNumber num={adviceData?.id}/>
       <Quotes advice={adviceData?.advice}/>
       <Img />
-      <GenerateBtn fetchAdvice={fetchAdvice} isLoading={isLoading}/>
+      <GenerateBtn fetchOnClick={fetchOnClick} isLoading={isLoading}/>
     </div>
   )
 }
