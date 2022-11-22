@@ -22,7 +22,7 @@ const AdviceContainer = () => {
           setTimeout(()=>{
             setAdviceData(data.slip)
             setIsLoading(false)
-        })
+        },1000)
         }catch(err){
           console.log(err)
           alert('Error: check console for more info')
