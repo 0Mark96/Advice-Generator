@@ -19,15 +19,18 @@ const AdviceContainer = () => {
         try{
           const response = await fetch('https://api.adviceslip.com/advice',{cache:'no-cache'}) // no cache -> fetching before the 2s limit of api
           const data = await response.json()
-          setAdviceData(data.slip)
+          setTimeout(()=>{
+            setAdviceData(data.slip)
+            setIsLoading(false)
+        })
         }catch(err){
           console.log(err)
           alert('Error: check console for more info')
-        }finally{
           setIsLoading(false)
         }
       }
    
+
     //fetching after mount and start interval
      useEffect(()=>{
       fetchAdvice()
@@ -41,6 +44,7 @@ const AdviceContainer = () => {
       clearInterval(intervalId)
       let interval = setInterval(fetchAdvice,60000)
       setIntervalId(interval)
+      console.log('btn');
     }
 
   return (
