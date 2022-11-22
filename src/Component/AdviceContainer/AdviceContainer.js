@@ -19,12 +19,12 @@ const AdviceContainer = () => {
         try{
           const response = await fetch('https://api.adviceslip.com/advice',{cache:'no-cache'}) // no cache -> fetching before the 2s limit of api
           const data = await response.json()
-          setIsLoading(false)
           setAdviceData(data.slip)
         }catch(err){
-          setIsLoading(false)
           console.log(err)
           alert('Error: check console for more info')
+        }finally{
+          setIsLoading(false)
         }
       }
    
